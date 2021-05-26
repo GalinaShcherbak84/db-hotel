@@ -1,0 +1,451 @@
+1. Seleziona tutti gli ospiti che sono stati identiﬁcati con la carta di identità
+
+SELECT `name`,`lastname`,`document_type` 
+FROM `ospiti` 
+WHERE `document_type` = 'CI';
+
+Full texts	
+name
+lastname
+document_type
+
+Edit Edit
+Copy Copy
+Delete Delete
+Elizabeth
+Romaguera
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Madie
+Sanford
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Lysanne
+Buckridge
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Jessie
+Kozey
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Shemar
+Keeling
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Edwardo
+Pacocha
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Jacquelyn
+Ankunding
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Willie
+Borer
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Kamron
+Murphy
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Charley
+Abernathy
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Tyrel
+Murphy
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Gillian
+Reichel
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Briana
+Cartwright
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Lamar
+Koch
+CI
+
+Edit Edit
+Copy Copy
+Delete Delete
+Lafayette
+Brakus
+CI
+
+2. Seleziona tutti gli ospiti che sono nati dopo il 1988
+
+SELECT `name`,`lastname`,`date_of_birth` 
+FROM `ospiti` 
+WHERE `date_of_birth`>'1988-12-31';
+
+Edit Edit
+Copy Copy
+Delete Delete
+Elizabeth
+Romaguera
+2005-03-12 10:37:05
+
+Edit Edit
+Copy Copy
+Delete Delete
+Jacquelyn
+Ankunding
+1992-11-19 06:15:10
+
+Edit Edit
+Copy Copy
+Delete Delete
+Tristian
+Koss
+2003-01-27 03:01:13
+
+Edit Edit
+Copy Copy
+Delete Delete
+Kamron
+Murphy
+2002-12-17 15:29:31
+
+Edit Edit
+Copy Copy
+Delete Delete
+Helene
+Hansen
+2000-02-24 12:21:08
+
+Edit Edit
+Copy Copy
+Delete Delete
+Dion
+Leannon
+1993-09-22 15:41:21
+
+Edit Edit
+Copy Copy
+Delete Delete
+Emilie
+Grant
+2010-12-18 14:22:44
+
+Edit Edit
+Copy Copy
+Delete Delete
+Laurence
+Green
+2008-12-25 13:42:07
+
+Edit Edit
+Copy Copy
+Delete Delete
+Nikita
+Donnelly
+2001-12-26 02:54:30
+
+Edit Edit
+Copy Copy
+Delete Delete
+Gillian
+Reichel
+2000-09-01 03:03:09
+
+3. Seleziona tutti gli ospiti che hanno più di 20 anni (al momento dell’esecuzione della query)
+
+SELECT `name`,`lastname`,`date_of_birth` 
+FROM `ospiti` 
+WHERE `date_of_birth`< NOW()-INTERVAL 20 YEAR;
+
+Edit Edit
+Copy Copy
+Delete Delete
+Madie
+Sanford
+1964-04-02 17:51:08
+
+Edit Edit
+Copy Copy
+Delete Delete
+Orion
+Hilpert
+1975-06-30 18:04:07
+
+Edit Edit
+Copy Copy
+Delete Delete
+Lysanne
+Buckridge
+1960-01-25 05:59:53
+
+Edit Edit
+Copy Copy
+Delete Delete
+Jessie
+Kozey
+1982-06-05 06:00:13
+
+Edit Edit
+Copy Copy
+Delete Delete
+Shemar
+Keeling
+1957-06-14 11:43:50
+
+Edit Edit
+Copy Copy
+Delete Delete
+Edwardo
+Pacocha
+1959-03-29 01:01:36
+
+Edit Edit
+Copy Copy
+Delete Delete
+Delilah
+Renner
+1922-11-05 18:13:56
+
+Edit Edit
+Copy Copy
+Delete Delete
+Jacquelyn
+Ankunding
+1992-11-19 06:15:10
+
+Edit Edit
+Copy Copy
+Delete Delete
+Willie
+Borer
+1926-12-17 17:48:37
+
+Edit Edit
+Copy Copy
+Delete Delete
+Helene
+Hansen
+2000-02-24 12:21:08
+
+Edit Edit
+Copy Copy
+Delete Delete
+Charley
+Abernathy
+1930-04-24 00:12:40
+
+Edit Edit
+Copy Copy
+Delete Delete
+Dion
+Leannon
+1993-09-22 15:41:21
+
+Edit Edit
+Copy Copy
+Delete Delete
+Zelda
+Johns
+1953-04-03 20:58:01
+
+Edit Edit
+Copy Copy
+Delete Delete
+Hadley
+Collins
+1947-06-04 11:31:03
+
+Edit Edit
+Copy Copy
+Delete Delete
+Deron
+Hand
+1953-08-06 18:27:40
+
+Edit Edit
+Copy Copy
+Delete Delete
+Adriana
+Abernathy
+1952-06-01 03:28:30
+
+Edit Edit
+Copy Copy
+Delete Delete
+Tyrel
+Murphy
+1977-03-02 10:51:34
+
+Edit Edit
+Copy Copy
+Delete Delete
+Dandre
+Kautzer
+1988-05-22 08:37:49
+
+Edit Edit
+Copy Copy
+Delete Delete
+Arlo
+Keeling
+1924-03-09 05:05:51
+
+Edit Edit
+Copy Copy
+Delete Delete
+Gillian
+Reichel
+2000-09-01 03:03:09
+
+Edit Edit
+Copy Copy
+Delete Delete
+Briana
+Cartwright
+1926-01-21 14:47:47
+
+Edit Edit
+Copy Copy
+Delete Delete
+Shirley
+Brakus
+1951-08-19 19:37:29
+
+Edit Edit
+Copy Copy
+Delete Delete
+Lamar
+Koch
+1983-08-29 16:27:17
+
+Edit Edit
+Copy Copy
+Delete Delete
+Lafayette
+Brakus
+1955-09-02 02:12:26
+ 
+4. Seleziona tutti gli ospiti il cui nome inizia con la D
+
+SELECT `name`,`lastname`,`date_of_birth` 
+FROM `ospiti` 
+WHERE `date_of_birth`< NOW()-INTERVAL 20 YEAR;
+	
+Edit Edit
+Copy Copy
+Delete Delete
+Delilah
+Renner
+
+Edit Edit
+Copy Copy
+Delete Delete
+Dion
+Leannon
+
+Edit Edit
+Copy Copy
+Delete Delete
+Deron
+Hand
+
+Edit Edit
+Copy Copy
+Delete Delete
+Dandre
+Kautzer
+ 
+5. Calcola il totale incassato degli ordini accepted
+
+SELECT sum(`price`)
+FROM `pagamenti` 
+WHERE `status`='accepted';
+
+Tot_incassato
+4164.00
+ 
+6. Qual è il prezzo massimo pagato?
+
+SELECT MAX(`price`)
+FROM `pagamenti` 
+
+Max_incassato
+993.00
+
+SELECT sum(`price`)
+FROM `pagamenti` 
+WHERE `status`='accepted';
+
+Max_incassato_accepted
+869.00
+ 
+7. Seleziona gli ospiti riconosciuti con patente e nati nel 1975 
+
+SELECT `name`,`lastname`,`date_of_birth`,`document_type`
+FROM `ospiti` 
+WHERE YEAR(`date_of_birth`)= 1975
+AND`document_type`='Driver License';
+
+Edit Edit
+Copy Copy
+Delete Delete
+Orion
+Hilpert
+1975-06-30 18:04:07
+Driver License
+
+8. Quanti paganti sono anche ospiti?
+
+SELECT COUNT(`id`)
+FROM `paganti` 
+WHERE `ospite_id`<>'NULL';
+
+COUNT(`id`)
+14
+
+9. Quanti posti letto ha l’hotel in totale?
+
+SELECT SUM(`beds`) 
+FROM `stanze`; 
+
+SUM(`beds`)
+33
