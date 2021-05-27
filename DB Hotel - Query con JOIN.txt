@@ -1,0 +1,386 @@
+1. Come si chiamano gli ospiti che hanno fatto più di due prenotazioni?
+ 
+SELECT COUNT(`ospiti`.`id`) AS `Total_bookings`, `ospiti`.`name`, `ospiti`.`lastname`
+FROM `ospiti` 
+INNER JOIN `prenotazioni_has_ospiti`
+ON `prenotazioni_has_ospiti`.`ospite_id`=`ospiti`.`id`
+GROUP BY `ospiti`.`id`
+HAVING COUNT(`ospiti`.`id`) > 2;
+
+Total_bookings
+name
+lastname
+3
+Tristian
+Koss
+3
+Zelda
+Johns
+
+2. Stampare tutti gli ospiti per ogni prenotazione 
+
+SELECT `ospiti`.`id` AS `ospite`, `ospiti`.`name`, `ospiti`.`lastname`, `prenotazioni_has_ospiti`.`id` AS `prenotazione`, `stanze`.`room_number`  
+FROM `ospiti` 
+INNER JOIN `prenotazioni_has_ospiti`
+ON `prenotazioni_has_ospiti`.`ospite_id`=`ospiti`.`id`
+INNER JOIN `prenotazioni`
+ON `prenotazioni_has_ospiti`.`prenotazione_id`=`prenotazioni`.`id`
+INNER JOIN `stanze`
+ON `prenotazioni`.`stanza_id`=`stanze`.`id`
+
+
+46
+Zelda
+Johns
+4
+100
+51
+Adriana
+Abernathy
+15
+102
+37
+Edwardo
+Pacocha
+11
+103
+41
+Tristian
+Koss
+14
+103
+49
+Deron
+Hand
+24
+103
+56
+Gillian
+Reichel
+30
+104
+58
+Shirley
+Brakus
+3
+105
+54
+Arlo
+Keeling
+29
+105
+36
+Shemar
+Keeling
+20
+201
+40
+Willie
+Borer
+7
+202
+54
+Arlo
+Keeling
+18
+202
+43
+Helene
+Hansen
+8
+203
+47
+Hadley
+Collins
+27
+203
+56
+Gillian
+Reichel
+2
+204
+41
+Tristian
+Koss
+5
+204
+33
+Orion
+Hilpert
+12
+204
+51
+Adriana
+Abernathy
+25
+204
+32
+Madie
+Sanford
+28
+204
+41
+Tristian
+Koss
+10
+205
+46
+Zelda
+Johns
+13
+205
+31
+Elizabeth
+Romaguera
+19
+205
+32
+Madie
+Sanford
+1
+301
+46
+Zelda
+Johns
+6
+302
+38
+Delilah
+Renner
+17
+302
+55
+Nikita
+Donnelly
+21
+302
+
+
+3. Stampare Nome, Cognome, Prezzo e Pagante per tutte le prenotazioni fatte a Maggio 2018
+ 
+SELECT `paganti`.`id`,`paganti`.`name`,`paganti`.`lastname`,`pagamenti`.`updated_at`,`pagamenti`.`price`
+FROM `paganti`
+INNER JOIN `pagamenti`
+ON `pagamenti`.`pagante_id`=`paganti`.`id`
+
+
+id
+name
+lastname
+updated_at
+price
+3
+Russel
+Olson
+2018-05-28 13:53:45
+977.00
+23
+Willie
+Borer
+2018-05-28 13:53:45
+773.00
+10
+Adolfo
+Reichel
+2018-05-28 13:53:45
+869.00
+6
+Elizabeth
+Romaguera
+2018-05-28 13:53:45
+671.00
+16
+Willie
+Borer
+2018-05-28 13:53:45
+117.00
+4
+Conrad
+Kuhic
+2018-05-28 13:53:45
+59.00
+6
+Elizabeth
+Romaguera
+2018-05-28 13:53:45
+993.00
+28
+Orion
+Hilpert
+2018-05-28 13:53:45
+512.00
+13
+Madie
+Sanford
+2018-05-28 13:53:45
+389.00
+25
+Lysanne
+Buckridge
+2018-05-28 13:53:45
+332.00
+5
+Deron
+Hand
+2018-05-28 13:53:45
+67.00
+6
+Elizabeth
+Romaguera
+2018-05-28 13:53:45
+154.00
+4
+Conrad
+Kuhic
+2018-05-28 13:53:45
+434.00
+30
+Kamron
+Murphy
+2018-05-28 13:53:45
+562.00
+6
+Elizabeth
+Romaguera
+2018-05-28 13:53:45
+614.00
+11
+Malvina
+Thompson
+2018-05-28 13:53:45
+222.00
+25
+Lysanne
+Buckridge
+2018-05-28 13:53:45
+152.00
+30
+Kamron
+Murphy
+2018-05-28 13:53:45
+777.00
+7
+Delilah
+Renner
+2018-05-28 13:53:45
+822.00
+26
+Laurence
+Skiles
+2018-05-28 13:53:45
+554.00
+16
+Willie
+Borer
+2018-05-28 13:53:45
+416.00
+28
+Orion
+Hilpert
+2018-05-28 13:53:45
+666.00
+16
+Willie
+Borer
+2018-05-28 13:53:45
+370.00
+9
+Lamar
+Koch
+2018-05-28 13:53:45
+647.00
+29
+Mabelle
+Botsford
+2018-05-28 13:53:45
+106.00
+
+
+4. Fai la somma di tutti i prezzi delle prenotazioni per le stanze del primo piano
+
+SELECT SUM(`pagamenti`.`price`) AS `totale`
+FROM `pagamenti`
+INNER JOIN `prenotazioni`
+ON `prenotazioni`.`id`=`pagamenti`.`prenotazione_id`
+INNER JOIN `stanze`
+ON `stanze`.`id`=`prenotazioni`.`stanza_id`
+WHERE `stanze`.`floor`= 1;
+
+totale
+4509.00
+ 
+5. Prendi i dati di fatturazione per la prenotazione con id=7 
+
+SELECT `paganti`.`name`, `paganti`.`lastname`,`paganti`.`address` 
+FROM `paganti`
+INNER JOIN `pagamenti`
+ON `paganti`.`id`=`pagamenti`.`pagante_id`
+INNER JOIN `prenotazioni`
+on `prenotazioni`.`id`=`pagamenti`.`prenotazione_id`
+WHERE `prenotazioni`.`id`='7'
+
+name
+lastname
+address
+Elizabeth
+Romaguera
+3125 Kenya Path Apt. 401
+Thoraborough, TN 06428
+
+
+6. Le stanze sono state tutte prenotate almeno una volta? (Visualizzare le stanze non ancora prenotate)
+
+SELECT COUNT(`prenotazioni`.`id`) AS `prenotazione`, `stanze`.`id` AS `stanza`, `stanze`.`room_number`
+FROM `prenotazioni`
+RIGHT JOIN `stanze`
+ON `stanze`.`id`=`prenotazioni`.`stanza_id`
+GROUP BY `stanze`.`id`
+
+prenotazione
+stanza
+room_number
+1
+1
+100
+0
+2
+101
+1
+3
+102
+3
+4
+103
+1
+5
+104
+2
+6
+105
+1
+7
+201
+2
+8
+202
+2
+9
+203
+5
+10
+204
+3
+11
+205
+1
+12
+301
+3
+13
+302
+2
+14
+303
+3
+15
+304
